@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* @import url('https://fonts.googleapis.com/css2?family=Imperial+Script&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:wght@500&display=swap'); */
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      @font-face {
+        font-family: "calculator";
+        src: url("./digital-7/digital-7.ttf");
+      }
+
+      body {
+        margin: auto;
+        height: 50vh;
+        width: 50vh;
+      }
+
+      .main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #99c089;
+        height: 50vh;
+        width: 50vh;
+        margin-top: 50%;
+      }
+
+      .calculator {
+        height: 300px;
+        width: 280px;
+        background-color: #575757;
+        border-radius: 10px;
+        padding: 24px 20px;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        /* box-shadow: 5px 10px 8px  #7a976b; */
+        /* box-shadow: 79px 63px #7a976b; */
+      }
+
+      .calculator::before {
+        content: "";
+        position: absolute;
+        bottom: -12px;
+        right: 0;
+        left: 0;
+        background-color: #404040;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        height: 20px;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .calculator-input {
+        width: 100%;
+        height: 40px;
+        background-color: #bbd0bf;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        font-size: 24px;
+        text-align: end;
+        padding: 4px 8px;
+        margin-bottom: 20px;
+        font-family: "calculator";
+      }
+
+      .calculator-number {
+        display: flex;
+      }
+
+      .calculator-number-items {
+        width: 25%;
+        padding: 0 2px;
+      }
+
+      .calculator-number-item {
+        background-color: #ebebeb;
+        width: 100%;
+        padding: 4px 8px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 20px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .calculator-number-item-yl {
+        background-color: #f4a34d;
+        width: 100%;
+        padding: 4px 8px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 20px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .mr-20 {
+        margin-top: 16px;
+      }
+
+      .calculator-number-item:active {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <form class="calculator" name="forms">
+        <input onchange="handleInputClick()" type="text" class="calculator-input" name="txt" id="" />
+        <div class="calculator-number">
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="seven"
+              value="7"
+              onclick="handleSevenClick()"
+            >
+              7
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="eight"
+              value="8"
+              onclick="handleEightClick()"
+            >
+              8
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="nine"
+              value="9"
+              onclick="handleNineClick()"
+            >
+              9
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="device"
+              value="/"
+              onclick="handleDeviceClick()"
+            >
+              /
+            </button>
+          </div>
+        </div>
+        <div class="calculator-number mr-20">
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="four"
+              value="4"
+              onclick="handleFourClick()"
+            >
+              4
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="five"
+              value="5"
+              onclick="handleFiveClick()"
+            >
+              5
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="six"
+              value="6"
+              onclick="handleSixClick()"
+            >
+              6
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="Multi"
+              value="*"
+              onclick="handleMultiplicationClick()"
+            >
+              x
+            </button>
+          </div>
+        </div>
+        <div class="calculator-number mr-20">
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="one"
+              value="1"
+              onclick="handleOneClick()"
+            >
+              1
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="two"
+              value="2"
+              onclick="handleTwoClick()"
+            >
+              2
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="three"
+              value="3"
+              onclick="handleThreeClick()"
+            >
+              3
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="sub"
+              value="-"
+              onclick="handleSubClick()"
+            >
+              -
+            </button>
+          </div>
+        </div>
+        <div class="calculator-number mr-20">
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="zero"
+              value="0"
+              onclick="handleZeroClick()"
+            >
+              0
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="ch"
+              value="."
+              onclick="handleClick()"
+            >
+              .
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="add"
+              value="+"
+              onclick="handleAddClick()"
+            >
+              +
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item-yl"
+              type="button"
+              id="result"
+              value="="
+              onclick="handleSubmitClick()"
+            >
+              =
+            </button>
+          </div>
+          <div class="calculator-number-items">
+            <button
+              class="calculator-number-item"
+              type="button"
+              id="clear"
+              value=" "
+              onclick="handleClearClick()"
+            >
+              AC
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script>
+    const handleSevenClick = () => {
+      document.forms.txt.value += document.getElementById("seven").value;
+    };
+
+    const handleEightClick = () => {
+      document.forms.txt.value += document.getElementById("eight").value;
+    };
+
+    const handleNineClick = () => {
+      document.forms.txt.value += document.getElementById("nine").value;
+    };
+
+    const handleDeviceClick = () => {
+      document.forms.txt.value += document.getElementById("device").value;
+    };
+
+    const handleFourClick = () => {
+      document.forms.txt.value += document.getElementById("four").value;
+    };
+
+    const handleFiveClick = () => {
+      document.forms.txt.value += document.getElementById("five").value;
+    };
+
+    const handleSixClick = () => {
+      document.forms.txt.value += document.getElementById("six").value;
+    };
+
+    const handleMultiplicationClick = () => {
+      document.forms.txt.value += document.getElementById("Multi").value;
+    };
+
+    const handleOneClick = () => {
+      document.forms.txt.value += document.getElementById("one").value;
+    };
+
+    const handleTwoClick = () => {
+      document.forms.txt.value += document.getElementById("two").value;
+    };
+
+    const handleThreeClick = () => {
+      document.forms.txt.value += document.getElementById("three").value;
+    };
+
+    const handleSubClick = () => {
+      document.forms.txt.value += document.getElementById("sub").value;
+    };
+
+    const handleZeroClick = () => {
+      document.forms.txt.value += document.getElementById("zero").value;
+    };
+
+    const handleClick = () => {
+      document.forms.txt.value += document.getElementById("ch").value;
+    };
+
+    const handleAddClick = () => {
+      document.forms.txt.value += document.getElementById("add").value;
+    };
+
+    const handleClearClick = () => {
+      document.forms.txt.value = document.getElementById("clear").value;
+    };
+
+    const handleSubmitClick = () => {
+      try {
+        const result = eval(document.forms.txt.value);
+        document.forms.txt.value = result;
+      } catch (error) {
+        document.forms.txt.value = "CAN NOT CALCULATOR";
+      }
+    };
+  </script>
+</html>
